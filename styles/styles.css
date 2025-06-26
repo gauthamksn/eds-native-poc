@@ -12,12 +12,12 @@
 
 :root {
   /* colors */
-  --background-color: white;
-  --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+  --background-color: #1a1a1a;
+  --light-color: #2a2a2a;
+  --dark-color: #707070;
+  --text-color: #f0f0f0;
+  --link-color: #4d8aff;
+  --link-hover-color: #80acff;
 
   /* fonts */
   --body-font-family: roboto, roboto-fallback, sans-serif;
@@ -252,6 +252,7 @@ main > .section:first-of-type {
 main .section.light,
 main .section.highlight {
   background-color: var(--light-color);
+  color: var(--text-color);
   margin: 0;
   padding: 40px 0;
 }
