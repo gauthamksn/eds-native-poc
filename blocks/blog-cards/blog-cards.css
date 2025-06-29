@@ -2,12 +2,11 @@
 
 .blog-cards {
   max-width: 1260px;
-
   margin: 0 auto;
-  padding: 2rem 1rem;
 }
 
 .blog-cards-grid {
+  padding-top: 2em;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;
