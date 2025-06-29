@@ -1,0 +1,65 @@
+/* Blog Layout Styles */
+
+/* Layout adjustments for blog with TOC */
+body.blog main {
+  display: grid;
+  grid-template-columns: minmax(200px, 1fr) minmax(0, 3fr);
+  grid-template-areas: 
+    "hero hero"
+    "toc content";
+  gap: 2rem;
+  align-items: start;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 1rem;
+}
+
+/* Reset margin for sections in blog layout */
+body.blog main > div {
+  margin: 1rem 0;
+}
+
+/* Hero section spans both columns */
+body.blog main > div:first-child {
+  grid-area: hero;
+  margin-top: 0;
+}
+
+/* TOC is placed in the left column */
+body.blog main > div:nth-child(2) {
+  grid-area: toc;
+  align-self: start; /* Important for sticky positioning */
+  height: fit-content;
+}
+
+/* Content sections go to the right column */
+body.blog main > div:not(:first-child):not(:nth-child(2)) {
+  grid-area: content;
+}
+
+/* Ensure the blog-author block appears at the bottom of content */
+body.blog .blog-author-wrapper {
+  margin-top: 3rem;
+}
+
+/* Responsive adjustments for blog layout */
+@media (max-width: 900px) {
+  body.blog main {
+    display: block;
+    padding: 0 1rem;
+  }
+  
+  body.blog main > div:first-child,
+  body.blog main > div:nth-child(2),
+  body.blog main > div:not(:first-child):not(:nth-child(2)) {
+    grid-area: auto;
+  }
+  
+  body.blog main > div:nth-child(2) {
+    order: 1; /* Move TOC after hero but before content on mobile */
+  }
+  
+  body.blog main > div:not(:first-child):not(:nth-child(2)) {
+    order: 2; /* Ensure content comes after TOC on mobile */
+  }
+}

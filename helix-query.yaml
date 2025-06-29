@@ -1,0 +1,5 @@
+indices:
+  blogs:
+    include:
+      - /blogs/**
+    target: /blog-index.json

@@ -29,6 +29,30 @@ function buildHeroBlock(main) {
 }
 
 /**
+ * Builds table of contents block for blog pages.
+ * @param {Element} main The container element
+ */
+function buildTocBlock(main) {
+  // Only build TOC for blog pages
+  if (document.body.classList.contains('blog') && !document.querySelector('.toc')) {
+    // Create TOC block
+    const tocBlock = buildBlock('toc', '');
+    
+    // Create a wrapper div for the TOC
+    const tocWrapper = document.createElement('div');
+    tocWrapper.appendChild(tocBlock);
+    
+    // Insert TOC after the hero section (which is the first div)
+    const heroSection = main.querySelector(':scope > div');
+    if (heroSection) {
+      heroSection.insertAdjacentElement('afterend', tocWrapper);
+    } else {
+      main.prepend(tocWrapper);
+    }
+  }
+}
+
+/**
  * load fonts.css and set a session storage flag
  */
 async function loadFonts() {
@@ -47,6 +71,7 @@ async function loadFonts() {
 function buildAutoBlocks(main) {
   try {
     buildHeroBlock(main);
+    buildTocBlock(main);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
@@ -85,6 +110,11 @@ async function loadEager(doc) {
     /* if desktop (proxy for fast connection) or fonts already loaded, load fonts.css */
     if (window.innerWidth >= 900 || sessionStorage.getItem('fonts-loaded')) {
       loadFonts();
+    }
+    
+    /* load blog styles if body has blog class */
+    if (document.body.classList.contains('blog')) {
+      await loadCSS(`${window.hlx.codeBasePath}/styles/blog.css`);
     }
   } catch (e) {
     // do nothing

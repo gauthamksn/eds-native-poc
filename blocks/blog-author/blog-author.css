@@ -1,0 +1,110 @@
+.blog-author {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  /* Glassmorphism effect */
+  background: rgba(42, 42, 42, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  padding: 1.5rem;
+  margin: 3rem 0;
+}
+
+.blog-author-image {
+  flex: 0 0 100px;
+}
+
+.blog-author-image img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  /* Add a subtle glow to the image */
+  box-shadow: 0 0 15px rgba(77, 138, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.blog-author-info {
+  flex: 1 1 calc(100% - 130px);
+}
+
+.blog-author-info h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: var(--heading-font-size-s);
+  /* Add a subtle text glow */
+  text-shadow: 0 0 5px rgba(77, 138, 255, 0.3);
+}
+
+.blog-author-info p {
+  margin-top: 0;
+  font-size: var(--body-font-size-s);
+  color: var(--text-color);
+  opacity: 0.9;
+}
+
+.blog-author-bio {
+  flex: 0 0 100%;
+  margin-top: 1rem;
+  font-size: var(--body-font-size-s);
+  /* Add a subtle glass panel for the bio */
+  padding: 1rem;
+  background: rgba(42, 42, 42, 0.4);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.blog-author-social {
+  flex: 0 0 100%;
+  margin-top: 1rem;
+}
+
+.blog-author-social ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 1rem;
+}
+
+.blog-author-social a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--body-font-size-xs);
+  /* Glassmorphism buttons for social links */
+  padding: 0.5rem 1rem;
+  background: rgba(77, 138, 255, 0.2);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.blog-author-social a:hover {
+  text-decoration: none;
+  background: rgba(77, 138, 255, 0.4);
+  box-shadow: 0 0 15px rgba(77, 138, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .blog-author-container {
+    flex-direction: column;
+  }
+  
+  .blog-author-image {
+    margin: 0 auto;
+  }
+  
+  .blog-author-info {
+    text-align: center;
+  }
+  
+  .blog-author-social ul {
+    justify-content: center;
+  }
+}

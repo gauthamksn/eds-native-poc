@@ -1,0 +1,69 @@
+.note-wrapper {
+  margin: 2rem 0;
+}
+
+.note {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.5rem;
+  
+  /* Glassmorphism effect */
+  background: rgba(42, 42, 42, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  
+  /* Add a subtle left border accent */
+  border-left: 4px solid var(--link-color);
+}
+
+.note-icon {
+  flex: 0 0 24px;
+  color: var(--link-color);
+  /* Add a subtle glow to the icon */
+  filter: drop-shadow(0 0 5px rgba(77, 138, 255, 0.5));
+}
+
+.note-content {
+  flex: 1;
+  font-size: var(--body-font-size-s);
+  line-height: 1.5;
+}
+
+/* Style for different note types - can be extended with additional classes */
+.note.warning {
+  border-left-color: #ff9800;
+}
+
+.note.warning .note-icon {
+  color: #ff9800;
+  filter: drop-shadow(0 0 5px rgba(255, 152, 0, 0.5));
+}
+
+.note.success {
+  border-left-color: #4caf50;
+}
+
+.note.success .note-icon {
+  color: #4caf50;
+  filter: drop-shadow(0 0 5px rgba(76, 175, 80, 0.5));
+}
+
+.note.error {
+  border-left-color: #f44336;
+}
+
+.note.error .note-icon {
+  color: #f44336;
+  filter: drop-shadow(0 0 5px rgba(244, 67, 54, 0.5));
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .note {
+    padding: 1rem;
+  }
+}
