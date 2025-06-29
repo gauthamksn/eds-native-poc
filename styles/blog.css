@@ -2,39 +2,39 @@
 
 /* Layout adjustments for blog with TOC */
 body.blog main {
-  display: grid;
-  grid-template-columns: minmax(200px, 1fr) minmax(0, 3fr);
-  grid-template-areas: 
-    "hero hero"
-    "toc content";
-  gap: 2rem;
-  align-items: start;
+  display: block;
   margin: 0 auto;
   max-width: 1200px;
   padding: 0 1rem;
+  position: relative;
 }
 
-/* Reset margin for sections in blog layout */
-body.blog main > div {
-  margin: 1rem 0;
-}
-
-/* Hero section spans both columns */
+/* Hero section spans full width */
 body.blog main > div:first-child {
-  grid-area: hero;
-  margin-top: 0;
+  width: 100%;
+  margin-bottom: 2rem;
 }
 
-/* TOC is placed in the left column */
+/* Two-column layout for TOC and content */
 body.blog main > div:nth-child(2) {
-  grid-area: toc;
-  align-self: start; /* Important for sticky positioning */
+  float: left;
+  width: 25%;
+  position: sticky;
+  top: 2rem;
   height: fit-content;
 }
 
-/* Content sections go to the right column */
+/* Content sections */
 body.blog main > div:not(:first-child):not(:nth-child(2)) {
-  grid-area: content;
+  float: right;
+  width: 70%;
+  margin-bottom: 3rem;
+  clear: right;
+}
+
+/* Ensure sections display properly */
+body.blog main > div.section {
+  display: block;
 }
 
 /* Ensure the blog-author block appears at the bottom of content */
@@ -42,24 +42,23 @@ body.blog .blog-author-wrapper {
   margin-top: 3rem;
 }
 
+/* Clearfix for the layout */
+body.blog main::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 /* Responsive adjustments for blog layout */
 @media (max-width: 900px) {
-  body.blog main {
-    display: block;
-    padding: 0 1rem;
-  }
-  
-  body.blog main > div:first-child,
   body.blog main > div:nth-child(2),
   body.blog main > div:not(:first-child):not(:nth-child(2)) {
-    grid-area: auto;
+    float: none;
+    width: 100%;
   }
   
   body.blog main > div:nth-child(2) {
-    order: 1; /* Move TOC after hero but before content on mobile */
-  }
-  
-  body.blog main > div:not(:first-child):not(:nth-child(2)) {
-    order: 2; /* Ensure content comes after TOC on mobile */
+    position: static;
+    margin-bottom: 2rem;
   }
 }
