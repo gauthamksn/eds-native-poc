@@ -3,3 +3,6 @@ indices:
     include:
       - /blogs/**
     target: /blog-index.json
+    properties:
+      title:
+        select: head > title
